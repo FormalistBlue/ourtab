@@ -1,0 +1,9 @@
+{
+  "common": { "add": "Add", "edit": "Edit", "delete": "Delete", "save": "Save", "cancel": "Cancel", "confirm": "Confirm", "close": "Close", "loading": "Loading...", "success": "Success", "error": "Error" },
+  "sidebar": { "title": "Tab Groups", "addGroup": "New Group", "editGroup": "Edit Group", "deleteGroup": "Delete Group", "deleteConfirm": "Delete this group?" },
+  "search": { "placeholder": "Search the web...", "engines": { "google": "Google", "bing": "Bing", "duckduckgo": "DuckDuckGo" } },
+  "tabs": { "addTab": "New Tab", "editTab": "Edit Tab", "deleteTab": "Delete Tab", "deleteConfirm": "Delete this tab?", "name": "Name", "url": "URL", "icon": "Icon" },
+  "folder": { "title": "Folder", "addTab": "Add Tab", "empty": "This folder is empty" },
+  "settings": { "title": "Settings", "search": "Search", "theme": "Theme", "language": "Language", "background": "Background", "searchEngine": "Default Search Engine", "currentTheme": "Current Theme", "currentLanguage": "Current Language", "backgroundType": "Background Type" },
+  "importExport": { "title": "Import and Export", "export": "Export Data", "import": "Import Data", "exportSuccess": "Export complete", "importSuccess": "Import complete", "importError": "Import failed. Check the file format." }
+}

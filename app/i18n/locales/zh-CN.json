@@ -1,0 +1,9 @@
+{
+  "common": { "add": "添加", "edit": "编辑", "delete": "删除", "save": "保存", "cancel": "取消", "confirm": "确认", "close": "关闭", "loading": "加载中...", "success": "成功", "error": "错误" },
+  "sidebar": { "title": "标签分组", "addGroup": "新建分组", "editGroup": "编辑分组", "deleteGroup": "删除分组", "deleteConfirm": "确定要删除这个分组吗？" },
+  "search": { "placeholder": "搜索网页...", "engines": { "google": "Google", "bing": "Bing", "duckduckgo": "DuckDuckGo" } },
+  "tabs": { "addTab": "新建标签", "editTab": "编辑标签", "deleteTab": "删除标签", "deleteConfirm": "确定要删除这个标签吗？", "name": "名称", "url": "网址", "icon": "图标" },
+  "folder": { "title": "文件夹", "addTab": "添加标签", "empty": "文件夹为空" },
+  "settings": { "title": "设置", "search": "搜索设置", "theme": "主题设置", "language": "语言设置", "background": "背景设置", "searchEngine": "默认搜索引擎", "currentTheme": "当前主题", "currentLanguage": "当前语言", "backgroundType": "背景类型" },
+  "importExport": { "title": "导入导出", "export": "导出数据", "import": "导入数据", "exportSuccess": "导出成功", "importSuccess": "导入成功", "importError": "导入失败，请检查文件格式" }
+}

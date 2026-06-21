@@ -24,12 +24,11 @@ dist/
 .DS_Store
 Thumbs.db
 
-# CodeGraph local state
-.codegraph/codegraph.db
-.codegraph/codegraph.db-wal
-.codegraph/codegraph.db-shm
-.codegraph/daemon.log
-.codegraph/daemon.pid
+# Claude Code & tooling config
+.claude/
+.codegraph/
+.mcp.json
+opencode.jsonc
 
 # Logs
 *.log

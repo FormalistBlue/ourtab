@@ -12,7 +12,13 @@ const activeFolder = ref<Tab | undefined>()
 const folderOpen = ref(false)
 const orderedTabs = computed({
   get: () => tabsStore.currentRootTabs,
-  set: async (value: Tab[]) => tabsStore.reorderTabs(value.map((tab, index) => ({ id: tab.id, sortOrder: index }))),
+  set: async (value: Tab[]) => {
+    try {
+      await tabsStore.reorderTabs(value.map((tab, index) => ({ id: tab.id, sortOrder: index })))
+    } catch (error) {
+      console.error('Failed to reorder tabs:', error)
+    }
+  },
 })
 
 function openFolder(tab: Tab) {

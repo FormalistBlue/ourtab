@@ -2,6 +2,7 @@
 import type { Tab } from '~/types/ourtab'
 
 const props = defineProps<{ tab: Tab }>()
+// Emits for future context-menu integration (Task 9)
 const emit = defineEmits<{ edit: [tab: Tab]; delete: [tab: Tab] }>()
 
 function openTab() {

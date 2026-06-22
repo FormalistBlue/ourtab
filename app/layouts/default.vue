@@ -1,3 +1,5 @@
 <template>
-  <slot />
+  <n-message-provider>
+    <slot />
+  </n-message-provider>
 </template>

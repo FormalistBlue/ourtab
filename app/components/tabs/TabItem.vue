@@ -11,6 +11,7 @@ function openTab() {
 
 function openMenu(event: MouseEvent) {
   event.preventDefault()
+  event.stopPropagation()
   ContextMenu.showContextMenu({
     x: event.clientX,
     y: event.clientY,

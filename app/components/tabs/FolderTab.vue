@@ -7,6 +7,7 @@ const emit = defineEmits<{ open: [tab: Tab]; edit: [tab: Tab]; delete: [tab: Tab
 
 function openMenu(event: MouseEvent) {
   event.preventDefault()
+  event.stopPropagation()
   ContextMenu.showContextMenu({
     x: event.clientX,
     y: event.clientY,

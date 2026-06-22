@@ -71,6 +71,11 @@ body {
   }
 }
 
+/* Naive UI Color Picker Panel z-index fix */
+.n-color-picker-panel {
+  z-index: 10001 !important;
+}
+
 /* Modal Transitions */
 .modal-enter-active,
 .modal-leave-active {

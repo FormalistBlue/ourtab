@@ -6,7 +6,7 @@ import TabGrid from '~/components/tabs/TabGrid.vue'
 import { useGroupsStore } from '~/stores/groups'
 import { useTabsStore } from '~/stores/tabs'
 
-defineEmits<{ openSettings: []; openImportExport: [] }>()
+const emit = defineEmits<{ openSettings: []; openImportExport: [] }>()
 
 const { t } = useI18n()
 const groupsStore = useGroupsStore()
@@ -30,9 +30,7 @@ function handleContextMenu(event: MouseEvent) {
       },
       {
         label: t('contextMenu.settings'),
-        onClick: () => {
-          // Settings modal is handled by parent via emit
-        },
+        onClick: () => emit('openSettings'),
       },
     ],
   })

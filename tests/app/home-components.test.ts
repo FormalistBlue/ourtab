@@ -47,7 +47,8 @@ describe('home components', () => {
   it('switches groups by click and wheel', async () => {
     const wrapper = mount(Sidebar, globalMocks)
     const groups = useGroupsStore()
-    await wrapper.findAll('button')[1].trigger('click')
+    const menuItems = wrapper.findAll('.n-menu-item-content')
+    await menuItems[1].trigger('click')
     expect(groups.currentGroupId).toBe('g2')
     await wrapper.trigger('wheel', { deltaY: -100 })
     expect(groups.currentGroupId).toBe('g1')

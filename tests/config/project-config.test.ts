@@ -20,12 +20,11 @@ describe('project scaffold', () => {
     expect(nuxtConfig).toContain('databasePath')
   })
 
-  it('has app shell, CSS entry, shadcn config, and both locale files', () => {
+  it('has app shell, CSS entry, and both locale files', () => {
     expect(readFileSync('app/app.vue', 'utf8')).toContain('<NuxtLayout>')
     expect(readFileSync('app/layouts/default.vue', 'utf8')).toContain('<slot />')
     expect(readFileSync('app/assets/css/main.css', 'utf8')).toContain('--ourtab-background')
     expect(readFileSync('app/i18n/locales/zh-CN.json', 'utf8')).toContain('settings')
     expect(readFileSync('app/i18n/locales/en-US.json', 'utf8')).toContain('settings')
-    expect(existsSync('components.json')).toBe(true)
   })
 })

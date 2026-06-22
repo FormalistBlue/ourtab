@@ -12,15 +12,14 @@ async function saveBackground() {
 
 <template>
   <section class="flex flex-col gap-3">
-    <label class="flex flex-col gap-2 text-sm font-medium">
-      {{ $t('settings.backgroundType') }}
-      <select v-model="localType" class="rounded-xl border border-slate-200 bg-white px-3 py-2">
-        <option value="gradient">gradient</option>
-        <option value="image">image</option>
-        <option value="color">color</option>
-      </select>
-    </label>
-    <label class="flex flex-col gap-2 text-sm font-medium">Value<input v-model="localValue" class="rounded-xl border border-slate-200 bg-white px-3 py-2" /></label>
-    <button class="rounded-xl bg-slate-950 px-4 py-2 text-white" type="button" @click="saveBackground">{{ $t('common.save') }}</button>
+    <div class="flex flex-col gap-2">
+      <span class="text-sm font-medium">{{ $t('settings.backgroundType') }}</span>
+      <n-select v-model:value="localType" :options="[{ label: 'gradient', value: 'gradient' }, { label: 'image', value: 'image' }, { label: 'color', value: 'color' }]" />
+    </div>
+    <div class="flex flex-col gap-2">
+      <span class="text-sm font-medium">Value</span>
+      <n-input v-model:value="localValue" />
+    </div>
+    <n-button type="primary" @click="saveBackground">{{ $t('common.save') }}</n-button>
   </section>
 </template>

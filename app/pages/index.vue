@@ -16,16 +16,20 @@ const settingsOpen = ref(false)
 const importExportOpen = ref(false)
 const { applyTheme } = useTheme()
 const { applyBackground } = useBackground()
+const { setLocale } = useI18n()
 
 onMounted(async () => {
   await Promise.all([groupsStore.fetchGroups(), tabsStore.fetchTabs(), settingsStore.fetchSettings()])
   applyTheme()
   applyBackground()
+  if (settingsStore.settings.language) {
+    setLocale(settingsStore.settings.language)
+  }
 })
 </script>
 
 <template>
-  <div class="ourtab-shell flex min-h-screen gap-6 p-4 md:p-6">
+    <div class="ourtab-shell flex min-h-screen gap-6 pr-4 pt-4 pb-4 md:pr-6 md:pt-6 md:pb-6">
     <Sidebar />
     <MainContent @open-settings="settingsOpen = true" @open-import-export="importExportOpen = true" />
     <SettingsModal v-model:open="settingsOpen" />

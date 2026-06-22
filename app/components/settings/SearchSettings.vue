@@ -2,16 +2,14 @@
 import { useSettingsStore } from '~/stores/settings'
 
 const settingsStore = useSettingsStore()
-async function setEngine(event: Event) {
-  await settingsStore.updateSetting('search_engine', (event.target as HTMLSelectElement).value)
+async function setEngine(value: string) {
+  await settingsStore.updateSetting('search_engine', value)
 }
 </script>
 
 <template>
-  <label class="flex flex-col gap-2 text-sm font-medium">
-    {{ $t('settings.searchEngine') }}
-    <select :value="settingsStore.settings.search_engine" class="rounded-xl border border-slate-200 bg-white px-3 py-2" @change="setEngine">
-      <option v-for="engine in settingsStore.settings.search_engines" :key="engine.id" :value="engine.id">{{ engine.name }}</option>
-    </select>
-  </label>
+  <div class="flex flex-col gap-2">
+    <span class="text-sm font-medium">{{ $t('settings.searchEngine') }}</span>
+    <n-select :value="settingsStore.settings.search_engine" :options="settingsStore.settings.search_engines.map(e => ({ label: e.name, value: e.id }))" @update:value="setEngine" />
+  </div>
 </template>

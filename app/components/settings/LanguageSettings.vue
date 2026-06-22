@@ -2,17 +2,17 @@
 import { useSettingsStore } from '~/stores/settings'
 
 const settingsStore = useSettingsStore()
-async function setLanguage(event: Event) {
-  await settingsStore.updateSetting('language', (event.target as HTMLSelectElement).value as 'zh-CN' | 'en-US')
+const { setLocale } = useI18n()
+async function setLanguage(value: string) {
+  const locale = value as 'zh-CN' | 'en-US'
+  await settingsStore.updateSetting('language', locale)
+  setLocale(locale)
 }
 </script>
 
 <template>
-  <label class="flex flex-col gap-2 text-sm font-medium">
-    {{ $t('settings.currentLanguage') }}
-    <select :value="settingsStore.settings.language" class="rounded-xl border border-slate-200 bg-white px-3 py-2" @change="setLanguage">
-      <option value="zh-CN">简体中文</option>
-      <option value="en-US">English</option>
-    </select>
-  </label>
+  <div class="flex flex-col gap-2">
+    <span class="text-sm font-medium">{{ $t('settings.currentLanguage') }}</span>
+    <n-select :value="settingsStore.settings.language" :options="[{ label: '简体中文', value: 'zh-CN' }, { label: 'English', value: 'en-US' }]" @update:value="setLanguage" />
+  </div>
 </template>

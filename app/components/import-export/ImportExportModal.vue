@@ -2,9 +2,10 @@
 import { ref } from 'vue'
 import type { ExportPayload } from '~/types/ourtab'
 
-defineProps<{ open: boolean }>()
-const emit = defineEmits<{ 'update:open': [open: boolean] }>()
+const open = defineModel<boolean>('open', { default: false })
 const fileInput = ref<HTMLInputElement | null>(null)
+
+function close() { open.value = false }
 
 async function exportData() {
   const payload = await $fetch<ExportPayload>('/api/export')
@@ -20,20 +21,23 @@ async function importData(event: Event) {
   if (!file) return
   const payload = JSON.parse(await file.text())
   await $fetch('/api/import', { method: 'POST', body: payload })
-  emit('update:open', false)
+  open.value = false
   window.location.reload()
 }
 </script>
 
 <template>
-  <div v-if="open" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/50 p-4" @click.self="emit('update:open', false)">
-    <section class="w-full max-w-lg rounded-3xl bg-white p-6 shadow-2xl">
-      <h2 class="mb-4 text-xl font-bold">{{ $t('importExport.title') }}</h2>
-      <div class="flex flex-col gap-3">
-        <button data-test="export-button" class="rounded-2xl bg-slate-950 px-4 py-3 text-white" type="button" @click="exportData">{{ $t('importExport.export') }}</button>
-        <input ref="fileInput" accept="application/json" class="hidden" type="file" @change="importData" />
-        <button class="rounded-2xl border border-slate-200 px-4 py-3" type="button" @click="fileInput?.click()">{{ $t('importExport.import') }}</button>
+  <Teleport to="body">
+    <Transition name="modal">
+      <div v-if="open" class="ourtab-modal-overlay" @click.self="close">
+        <n-card :title="$t('importExport.title')" closable segmented style="max-width: 28rem; width: 100%" @close="close">
+          <div class="flex flex-col gap-3">
+            <n-button data-test="export-button" type="primary" block @click="exportData">{{ $t('importExport.export') }}</n-button>
+            <input ref="fileInput" accept="application/json" class="hidden" type="file" @change="importData" />
+            <n-button block @click="fileInput?.click()">{{ $t('importExport.import') }}</n-button>
+          </div>
+        </n-card>
       </div>
-    </section>
-  </div>
+    </Transition>
+  </Teleport>
 </template>
